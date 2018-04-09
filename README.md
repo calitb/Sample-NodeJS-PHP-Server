@@ -9,8 +9,6 @@ Runs an Apache docker that connects to a MySQL docker. For database management t
 
 ### Running the app
 
-If you haven't download the container images before, start on step 1 below. If you already have, skip to step 2.
-
 #### Step 1: Login to Docker hub
 To be able to access the registry, you must first login:
 
@@ -19,11 +17,11 @@ docker login
 ```
 Just type your username and password and you will be set.
 
-#### Step 3: Configuration
+#### Step 2: Configuration
 
 Set the MySQL params and Adminer theme in the `.env` file, Or leave it as it is.
 
-#### Step 2: Launch the containers
+#### Step 3: Launch the containers
 
 Execute the following command:
 
@@ -39,11 +37,11 @@ You can check the running Docker containers using:
 docker ps
 ```
 
-#### Step 3: Run the Website
+#### Step 4: Run the Website
 
 Open [http://localhost:32770]()
 
-#### Step4: Run Adminer to manage the database
+#### Step 5: Run Adminer to manage the database
 
 Open [http://localhost:32771]()
 
@@ -58,7 +56,7 @@ The default password is `12345`, and database is `test`.
 #### Access your container
 
 ```bash
-docker exec -it mindslab bash
+docker exec -it website-php bash
 ```
 
 #### Stop the containers
