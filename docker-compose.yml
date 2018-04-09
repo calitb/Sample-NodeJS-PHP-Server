@@ -1,0 +1,46 @@
+version: '3'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: website-php
+    container_name: website-php
+    ports:
+      - 32770:80
+    volumes:
+      - ./php/src:/var/www/html/
+      - ./php/config/php.ini:/usr/local/etc/php/php.ini
+    links:
+      - mysql:db
+    depends_on:
+      - mysql
+  mysql:
+    build:
+      context: .
+      dockerfile: ./mysql/Dockerfile
+    image: website-mysql
+    container_name: website-mysql
+    ports:
+      - 13306:3306
+    env_file:
+      - ./.env
+    environment:
+      MYSQL_USER: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 32771:8080
+    env_file:
+      - ./.env
+    environment:
+      ADMINER_DESIGN: ${ADMINER_DESIGN}
+    links:
+      - mysql:db
+    depends_on:
+      - mysql
