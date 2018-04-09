@@ -7,14 +7,6 @@ Runs an Apache docker that connects to a MySQL docker. For database management t
  - Docker >= 1.10 : [Installation Instructions Linux](https://docs.docker.com/linux/step_one/) [Installation Instructions Mac](https://docs.docker.com/mac/step_one/)
  - Docker Compose >= 1.6.2 [Installation Instructions](https://docs.docker.com/compose/install/)
 
-### Installing the app
-
-Clone the repository from your Github account
-
-```bash
-
-```
-
 ### Running the app
 
 If you haven't download the container images before, start on step 1 below. If you already have, skip to step 2.
