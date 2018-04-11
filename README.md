@@ -29,15 +29,7 @@ Execute the following command:
 docker-compose up
 ```
 
-This will launch three docker containers: one for PHP, one for MySQL and one for Adminer. 
-
-You can check the running Docker containers using:
-
-```shell
-docker ps
-```
-
-#### Step 4: Run the Website
+#### Step 4: Run the App
 
 Open [http://localhost:32770]()
 
@@ -47,11 +39,11 @@ Open [http://localhost:32771]()
 
 #### Step 6: Make changes
 
-The changes in `/php/src` will be reflected in the website.
+The changes in `/php/src` will be reflected in the app.
 
 #### Step 7: Add tests
 
-Add your [PHPUnit](https://phpunit.readthedocs.io/en/7.1/index.html) tests in `/test/src`. To run the tests execute `./runtests`.
+Add your [PHPUnit](https://phpunit.readthedocs.io/en/7.1/index.html) tests in `/php/src`. To run the tests execute `/php/src/runtests`.
 
 #### Access the database through the terminal
 
@@ -61,10 +53,18 @@ mysql -u calitb -P 13306 -h 127.0.0.1 -p
 
 The default password is `12345`, and database is `test`.
 
-#### Access your container
+#### Access a container terminal
+
+List your containers:
+
+```shell
+docker ps
+```
+
+Access:
 
 ```bash
-docker exec -it website-php bash
+docker exec -it {container-name} bash
 ```
 
 #### Stop the containers
@@ -89,10 +89,10 @@ When running adminer [http://localhost:32771](), in `server` you need to use `db
 
 To access `mysql` inside the `php` container you do for example `$conn = new mysqli('db', ...)`, because that's how it is defined: `links: - mysql:db`.
 
-To access the `php` resources inside the `phpunit` container you need to use the full url, for example `system/index.php`, because that's how it is defined: `links: - php:system`.
+To access the `php` resources inside the `phpunit` container you need to use the full url, for example `app/index.php`, because that's how it is defined: `links: - php:app`.
 
 
 The following are the defined links:
 
-- `db`: links to `mysql` available for `php` and `adminer`
-- `system`: links to `php ` available for `phpunit`.
+- `db`: links to `mysql`, available for `php` and `adminer`
+- `app`: links to `php `, available for `phpunit`.

@@ -2,10 +2,10 @@ version: '3'
 services:
   php:
     build:
-      context: .
-      dockerfile: ./php/Dockerfile
-    image: website-php
-    container_name: website-php
+      context: ./php
+      dockerfile: ./Dockerfile-php
+    image: app-php
+    container_name: app-php
     ports:
       - 32770:80
     volumes:
@@ -17,10 +17,10 @@ services:
       - mysql
   mysql:
     build:
-      context: .
-      dockerfile: ./mysql/Dockerfile
-    image: website-mysql
-    container_name: website-mysql
+      context: ./mysql
+      dockerfile: ./Dockerfile-mysql
+    image: app-mysql
+    container_name: app-mysql
     ports:
       - 13306:3306
     env_file:
@@ -46,13 +46,14 @@ services:
       - mysql
   phpunit:
     build:
-      context: .
-      dockerfile: ./tests/Dockerfile
-    image: phpunit
-    container_name: phpunit
+      context: ./php
+      dockerfile: ./Dockerfile-phpunit
+    image: app-phpunit
+    container_name: app-phpunit
     volumes:
-      - ./tests:/var/www/html/
+      - ./php/src:/var/www/html/
+      - ./php/config/php.ini:/usr/local/etc/php/php.ini
     links:
-      - php:system
+      - php:app
     depends_on:
       - php

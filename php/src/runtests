@@ -7,6 +7,6 @@ export LANG=en_US.UTF-8
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${DIR}"
 
-rm output.html
-docker container exec phpunit ./phpunit --colors=always --testdox-html TestResults.html src
-open TestResults.html
+rm -f .TestResults.html
+docker container exec app-phpunit ./phpunit --colors=always --testdox-html .TestResults.html .
+open .TestResults.html
