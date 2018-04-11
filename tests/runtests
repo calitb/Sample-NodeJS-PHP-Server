@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# start in the current directory
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${DIR}"
+
+rm output.html
+docker container exec phpunit ./phpunit --colors=always --testdox-html TestResults.html src
+open TestResults.html

@@ -1,7 +1,5 @@
 <?php
 
-//    phpinfo();
-
 $servername = "db";
 $username = "calitb";
 $password = "12345";
@@ -26,5 +24,7 @@ if ($result && $result->num_rows > 0) {
     echo "0 results";
 }
 $conn->close();
+
+phpinfo();
 
 ?>

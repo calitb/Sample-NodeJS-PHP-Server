@@ -45,6 +45,14 @@ Open [http://localhost:32770]()
 
 Open [http://localhost:32771]()
 
+#### Step 6: Make changes
+
+The changes in `/php/src` will be reflected in the website.
+
+#### Step 7: Add tests
+
+Add your [PHPUnit](https://phpunit.readthedocs.io/en/7.1/index.html) tests in `/test/src`. To run the tests execute `./runtests`.
+
 #### Access the database through the terminal
 
 ```shell
@@ -66,3 +74,25 @@ Execute the following command:
 ```bash
 docker-compose down
 ```
+
+
+
+
+
+# Important!!
+
+When accessing the services inside the containers you need to use the `links` defined in the `/docker-compose.yml` file. 
+
+For example,
+
+When running adminer [http://localhost:32771](), in `server` you need to use `db`, because that's how it is defined: `links: - mysql:db`. 
+
+To access `mysql` inside the `php` container you do for example `$conn = new mysqli('db', ...)`, because that's how it is defined: `links: - mysql:db`.
+
+To access the `php` resources inside the `phpunit` container you need to use the full url, for example `system/index.php`, because that's how it is defined: `links: - php:system`.
+
+
+The following are the defined links:
+
+- `db`: links to `mysql` available for `php` and `adminer`
+- `system`: links to `php ` available for `phpunit`.

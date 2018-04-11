@@ -1,0 +1,9 @@
+FROM php:7.0-apache 
+
+MAINTAINER Carlos Thurber B.
+
+COPY ./tests/phpunit /var/www/html/phpunit
+
+RUN /bin/bash -c 'chmod +x /var/www/html/phpunit'
+
+WORKDIR /var/www/html/

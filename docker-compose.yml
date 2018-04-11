@@ -3,7 +3,7 @@ services:
   php:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./php/Dockerfile
     image: website-php
     container_name: website-php
     ports:
@@ -44,3 +44,15 @@ services:
       - mysql:db
     depends_on:
       - mysql
+  phpunit:
+    build:
+      context: .
+      dockerfile: ./tests/Dockerfile
+    image: phpunit
+    container_name: phpunit
+    volumes:
+      - ./tests:/var/www/html/
+    links:
+      - php:system
+    depends_on:
+      - php
