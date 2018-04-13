@@ -8,6 +8,7 @@
 
 <logging>
   <log type="testdox-html" target="./.TestResults.html"/>
+  <log type="junit" target="./.TestResults.xml"/>
 </logging>
 
 </phpunit>
