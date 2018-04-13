@@ -8,5 +8,5 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${DIR}"
 
 rm -f .TestResults.html
-docker container exec app-phpunit ./phpunit --colors=always --testdox-html .TestResults.html .
+docker container exec app-phpunit ./phpunit .
 open .TestResults.html
