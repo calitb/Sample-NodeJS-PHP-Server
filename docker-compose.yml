@@ -44,16 +44,3 @@ services:
       - mysql:db
     depends_on:
       - mysql
-  phpunit:
-    build:
-      context: ./php
-      dockerfile: ./Dockerfile-phpunit
-    image: app-phpunit
-    container_name: app-phpunit
-    volumes:
-      - ./php/src:/var/www/html/
-      - ./php/config/php.ini:/usr/local/etc/php/php.ini
-    links:
-      - php:app
-    depends_on:
-      - php

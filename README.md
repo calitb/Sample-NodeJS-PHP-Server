@@ -35,7 +35,7 @@ Open [http://localhost:32770]()
 
 #### Step 5: Run Adminer to manage the database
 
-Open [http://localhost:32771]()
+Open [http://localhost:32771](http://localhost:32771)
 
 #### Step 6: Make changes
 
@@ -43,7 +43,7 @@ The changes in `/php/src` will be reflected in the app.
 
 #### Step 7: Add tests
 
-Add your [PHPUnit](https://phpunit.readthedocs.io/en/7.1/index.html) tests in `/php/src`. To run the tests execute `/php/src/runtests`.
+Add your [PHPUnit](https://phpunit.readthedocs.io/en/7.1/index.html) tests in `/php/src`. To run the tests execute `/php/src/runtests` or open the url [http://localhost:32770/test.php](http://localhost:32770/test.php).
 
 #### Access the database through the terminal
 
@@ -89,10 +89,6 @@ When running adminer [http://localhost:32771](), in `server` you need to use `db
 
 To access `mysql` inside the `php` container you do for example `$conn = new mysqli('db', ...)`, because that's how it is defined: `links: - mysql:db`.
 
-To access the `php` resources inside the `phpunit` container you need to use the full url, for example `app/index.php`, because that's how it is defined: `links: - php:app`.
-
-
 The following are the defined links:
 
 - `db`: links to `mysql`, available for `php` and `adminer`
-- `app`: links to `php `, available for `phpunit`.
