@@ -4,9 +4,8 @@ MAINTAINER Carlos Thurber B.
 
 RUN docker-php-ext-install mysqli
 
-COPY ./src/phpunit /var/www/html/phpunit
-
-RUN /bin/bash -c 'chmod +x /var/www/html/phpunit'
+# fixing permissions
+RUN usermod -u 1000 www-data
 
 WORKDIR /var/www/html/
 
