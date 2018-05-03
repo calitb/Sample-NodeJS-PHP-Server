@@ -31,8 +31,6 @@ docker-compose up --build -d
 Open [http://local-dev:32770]() to see the website. 
 The changes in `/php/src` will be reflected in the app.
 
-Add your [PHPUnit](https://phpunit.readthedocs.io/en/7.1/index.html) tests in `/php/src`. To run the tests execute `./php/src/runtests` or open the url [http://localhost:32770/test.php](http://localhost:32770/test.php).
-
 
 Add your [PHPUnit](https://phpunit.readthedocs.io/en/7.1/index.html) tests in `/php/src`. To run the tests open the url [http://local-dev:32770/test]().
 
