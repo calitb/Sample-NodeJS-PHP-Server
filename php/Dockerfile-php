@@ -7,7 +7,6 @@ RUN docker-php-ext-install mysqli
 # fixing permissions
 RUN usermod -u 1000 www-data
 
+COPY src/ /var/www/html/
+
 WORKDIR /var/www/html/
-
-
-
