@@ -4,91 +4,59 @@ Runs an Apache docker that connects to a MySQL docker. For database management t
 
 ### Requirements
 
- - Docker >= 1.10 : [Installation Instructions Linux](https://docs.docker.com/linux/step_one/) [Installation Instructions Mac](https://docs.docker.com/mac/step_one/)
- - Docker Compose >= 1.6.2 [Installation Instructions](https://docs.docker.com/compose/install/)
+* Install [DockerToolbox](https://docs.docker.com/toolbox/toolbox_install_mac/)
+* Install [VirtualBox](https://www.virtualbox.org)
 
-### Running the app
 
-#### Step 1: Login to Docker hub
-To be able to access the registry, you must first login:
+For Convenience add `192.168.99.100  local-dev` to your `/etc/hosts`
+
+### Login to Docker hub
+
+To be able to access the registry, you must first login to [HubDocker](https://hub.docker.com):
 
 ```bash
 docker login
 ```
+
 Just type your username and password and you will be set.
 
-#### Step 2: Configuration
+### Start Container
 
-Set the MySQL params and Adminer theme in the `.env` file, Or leave it as it is.
-
-#### Step 3: Launch the containers
-
-Execute the following command:
-
-```bash
-docker-compose up
+```
+docker-compose up --build -d
 ```
 
-#### Step 4: Run the App
+##### Run the App
 
-Open [http://localhost:32770]()
-
-#### Step 5: Run Adminer to manage the database
-
-Open [http://localhost:32771](http://localhost:32771)
-
-#### Step 6: Make changes
-
+Open [http://local-dev:32770]() to see the website. 
 The changes in `/php/src` will be reflected in the app.
 
-#### Step 7: Add tests
+Add your [PHPUnit](https://phpunit.readthedocs.io/en/7.1/index.html) tests in `/php/src`. To run the tests execute `./php/src/runtests` or open the url [http://localhost:32770/test.php](http://localhost:32770/test.php).
 
-Add your [PHPUnit](https://phpunit.readthedocs.io/en/7.1/index.html) tests in `/php/src`. To run the tests execute `/php/src/runtests` or open the url [http://localhost:32770/test.php](http://localhost:32770/test.php).
 
-#### Access the database through the terminal
+Add your [PHPUnit](https://phpunit.readthedocs.io/en/7.1/index.html) tests in `/php/src`. To run the tests open the url [http://local-dev:32770/test]().
 
-```shell
-mysql -u calitb -P 13306 -h 127.0.0.1 -p
+
+### Enter Container Database
+
+Open [http://local-dev:32771]() to manage the database with Adminer. Or use the terminal:
+
+```
+mysql -u {user} -p -h 192.168.99.100
 ```
 
-The default password is `12345`, and database is `test`.
+the user and password are configured in the `./env` file.
 
-#### Access a container terminal
+server=`db`, user=`calitb`, password=`12345`, database=`test`.
 
-List your containers:
+### Enter Container CLI
 
-```shell
-docker ps
+```
+docker exec -it app-php bash
 ```
 
-Access:
+### Stop Container
 
-```bash
-docker exec -it {container-name} bash
 ```
-
-#### Stop the containers
-
-Execute the following command:
-
-```bash
 docker-compose down
 ```
-
-
-
-
-
-# Important!!
-
-When accessing the services inside the containers you need to use the `links` defined in the `/docker-compose.yml` file. 
-
-For example,
-
-When running adminer [http://localhost:32771](), in `server` you need to use `db`, because that's how it is defined: `links: - mysql:db`. 
-
-To access `mysql` inside the `php` container you do for example `$conn = new mysqli('db', ...)`, because that's how it is defined: `links: - mysql:db`.
-
-The following are the defined links:
-
-- `db`: links to `mysql`, available for `php` and `adminer`

@@ -9,7 +9,7 @@
         public function testShouldSucceedIfEqualStrings() {
             $this->assertEquals('hi','hi');
         }
-        
+
     }
 
-?>
+    ?>

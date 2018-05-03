@@ -2,4 +2,6 @@ FROM mysql:5.7
 
 MAINTAINER Carlos Thurber B.
 
+EXPOSE 3306 
+
 COPY ./test.sql docker-entrypoint-initdb.d/init.sql

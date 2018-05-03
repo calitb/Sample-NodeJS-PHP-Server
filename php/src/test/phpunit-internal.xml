@@ -1,0 +1,20 @@
+<phpunit
+  colors="false"
+  convertErrorsToExceptions="true"
+  convertNoticesToExceptions="true"
+  convertWarningsToExceptions="true"
+  beStrictAboutTestSize="true"
+  timeoutForSmallTests="1"
+  timeoutForMediumTests="30"
+  timeoutForLargeTests="60"
+  stopOnFailure="false">
+
+<logging>
+  <log type="junit" target="./outputs/TestResults.xml"/>
+</logging>
+
+<php>
+  <const name="HOST" value="http://localhost"/>
+</php>
+
+</phpunit>

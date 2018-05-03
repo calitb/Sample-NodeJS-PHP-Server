@@ -22,9 +22,7 @@ services:
     image: app-mysql
     container_name: app-mysql
     ports:
-      - 13306:3306
-    env_file:
-      - ./.env
+      - 3306:3306
     environment:
       MYSQL_USER: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
@@ -36,8 +34,6 @@ services:
     restart: always
     ports:
       - 32771:8080
-    env_file:
-      - ./.env
     environment:
       ADMINER_DESIGN: ${ADMINER_DESIGN}
     links:
