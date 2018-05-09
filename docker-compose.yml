@@ -10,7 +10,7 @@ services:
       - 32770:80
     volumes:
       - ./php/src:/var/www/html/
-      - ./php/config/php.ini:/usr/local/etc/php/php.ini
+      - ./php/myconfig.ini:/usr/local/etc/php/conf.d/myconfig.ini
     links:
       - mysql:db
     depends_on:
@@ -21,6 +21,9 @@ services:
       dockerfile: ./Dockerfile-mysql
     image: app-mysql
     container_name: app-mysql
+    volumes:
+      - ./mysql/.db:/var/lib/mysql
+    command: ['--innodb_use_native_aio=0']
     ports:
       - 3306:3306
     environment:
@@ -28,6 +31,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      TZ: America/Panama
   adminer:
     image: adminer
     container_name: adminer

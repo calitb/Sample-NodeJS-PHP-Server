@@ -1,7 +1,10 @@
-FROM mysql:5.7
+FROM mysql:8.0.3
 
 MAINTAINER Carlos Thurber B.
 
+# fixing permissions
+RUN usermod -u 1000 mysql
+
 EXPOSE 3306 
 
-COPY ./test.sql docker-entrypoint-initdb.d/init.sql
+COPY ./myDB.sql docker-entrypoint-initdb.d/init.sql

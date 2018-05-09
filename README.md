@@ -35,26 +35,47 @@ The changes in `/php/src` will be reflected in the app.
 Add your [PHPUnit](https://phpunit.readthedocs.io/en/7.1/index.html) tests in `/php/src`. To run the tests open the url [http://local-dev:32770/test]().
 
 
+### Enter Container CLI
+
+```
+docker exec -it app-php bash
+docker exec -it app-mysql bash
+```
+
 ### Enter Container Database
 
-Open [http://local-dev:32771]() to manage the database with Adminer. Or use the terminal:
+Open [http://local-dev:32771]() to manage the database with Adminer. 
+
+
+If you have MySQL in your host machine, you can do in the terminal:
 
 ```
 mysql -u {user} -p -h 192.168.99.100
 ```
 
+You can also enter the mysql container CLI first and then access mysql:
+
+``
+docker exec -it app-mysql bash
+mysql -u {user} -p
+```
+
+
 the user and password are configured in the `./env` file.
 
 server=`db`, user=`calitb`, password=`12345`, database=`test`.
 
-### Enter Container CLI
-
-```
-docker exec -it app-php bash
-```
-
 ### Stop Container
+
+
+Stop and destroy the containers:
 
 ```
 docker-compose down
+```
+
+Stop containers, but keep them for reuse:
+
+```
+docker-compose stop
 ```

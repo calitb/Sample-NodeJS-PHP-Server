@@ -9,4 +9,9 @@ RUN usermod -u 1000 www-data
 
 COPY src/ /var/www/html/
 
+EXPOSE 80
+
 WORKDIR /var/www/html/
+
+# fixing: AH00558: apache2: Could not reliably determine the server's fully qualified domain name
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
