@@ -12,7 +12,7 @@ services:
       - ./php/src:/var/www/html/
       - ./php/myconfig.ini:/usr/local/etc/php/conf.d/myconfig.ini
     links:
-      - mysql:db
+      - mysql:myDB
     depends_on:
       - mysql
   mysql:
@@ -41,6 +41,6 @@ services:
     environment:
       ADMINER_DESIGN: ${ADMINER_DESIGN}
     links:
-      - mysql:db
+      - mysql:myDB
     depends_on:
       - mysql

@@ -63,7 +63,7 @@ mysql -u {user} -p
 
 the user and password are configured in the `./env` file.
 
-server=`db`, user=`calitb`, password=`12345`, database=`test`.
+server=`myDB`, user=`calitb`, password=`12345`, database=`test`.
 
 ### Stop Container
 
