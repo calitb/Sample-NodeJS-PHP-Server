@@ -23,7 +23,7 @@ services:
     container_name: app-mysql
     volumes:
       - ./mysql/.db:/var/lib/mysql
-    command: ['--innodb_use_native_aio=0']
+    command: ['--innodb_use_native_aio=0','--log_bin_trust_function_creators=1']
     ports:
       - 3306:3306
     environment:
