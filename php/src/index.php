@@ -1,9 +1,9 @@
 <?php
 
-$username = "calitb";
-$password = "12345";
-$dbname = "test";
 $servername = "myDB";
+$username = getenv('MYSQL_USER');
+$password = getenv('MYSQL_PASSWORD');
+$dbname = getenv('MYSQL_DATABASE');
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname, 3306);

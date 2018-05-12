@@ -8,6 +8,11 @@ services:
     container_name: app-php
     ports:
       - 32770:80
+    environment:
+      MYSQL_SERVICE: myDB
+      MYSQL_USER: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     volumes:
       - ./php/src:/var/www/html/
       - ./php/myconfig.ini:/usr/local/etc/php/conf.d/myconfig.ini
