@@ -1,6 +1,6 @@
 FROM php:7.0-apache 
 
-MAINTAINER Carlos Thurber B.
+LABEL maintainer="Carlos Thurber B."
 
 RUN docker-php-ext-install mysqli
 
