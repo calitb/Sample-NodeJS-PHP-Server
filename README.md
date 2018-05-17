@@ -10,16 +10,6 @@ Runs an Apache docker that connects to a MySQL docker. For database management t
 
 For Convenience add `192.168.99.100  local-dev` to your `/etc/hosts`
 
-### Login to Docker hub
-
-To be able to access the registry, you must first login to [HubDocker](https://hub.docker.com):
-
-```bash
-docker login
-```
-
-Just type your username and password and you will be set.
-
 ### Start Container
 
 ```
