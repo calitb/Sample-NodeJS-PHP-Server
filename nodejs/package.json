@@ -1,0 +1,31 @@
+{
+  "name": "nodejs-service",
+  "version": "1.0.0",
+  "description": "NodeJS Service",
+  "author": "Carlos Thurber <thurber.carlos@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calitb/DockerWebsite.git"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon -e js,coffee -L --watch ./src -x \"npm start\""
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "coffeescript": "^2.3.0",
+    "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.4"
+  },
+  "nodemonConfig": {
+    "delay": "1500"
+  },
+  "homepage": "https://github.com/calitb/DockerWebsite#readme",
+  "main": "index.js",
+  "keywords": [
+    "mindslab"
+  ],
+  "license": "ISC"
+}

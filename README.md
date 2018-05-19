@@ -30,6 +30,7 @@ Add your [PHPUnit](https://phpunit.readthedocs.io/en/7.1/index.html) tests in `/
 ```
 docker exec -it app-php bash
 docker exec -it app-mysql bash
+docker exec -it nodejs /bin/ash
 ```
 
 ### Enter Container Database
@@ -69,3 +70,62 @@ Stop containers, but keep them for reuse:
 ```
 docker-compose stop
 ```
+
+
+## NodeJS Demo
+
+A sample NodeJS Server is running in [http://local-dev:32774/]()
+
+#### Used Packages
+`coffeescript`: This server supports vanilla Javascript (.js) and also Coffeescript (.coffee) files. 
+`express`: Minimal and flexible Node.js web application framework that provides a robust set of features.
+`body-parser`: Used to parse the params coming through the `body` variable.
+
+### Files
+
+* `index.js`: Enables CoffeeScript and includes the `app.js` file.
+* `app.js`: Starts `express` and defines two main routes:  `/` and `/coffeeScript`
+* `routesCoffee.coffee`: Defines the routes for the path `/coffeeScript`.
+* `routes.js`: Defines the routes for the path `/`.
+
+### Examples:
+
+Javascript:
+
+```
+//GET
+curl http://local-dev:32774/?var1=1&var2=2
+
+//GET with subpath
+curl http://local-dev:32774/someValue?var1=1&var2=2
+
+//POST
+curl http://local-dev:32774/ -d "var1=1&var2=2"
+
+//POST with subpath
+curl http://local-dev:32774/someValue -d "var1=1&var2=2"
+```
+
+CoffeeScript:
+
+```
+//GET
+curl http://local-dev:32774/coffeeScript/?var1=1&var2=2
+
+//GET with subpath
+curl http://local-dev:32774/coffeeScript/someValue?var1=1&var2=2
+
+//POST
+curl http://local-dev:32774/coffeeScript -d "var1=1&var2=2"
+
+//POST with subpath
+curl http://local-dev:32774/coffeeScript/someValue -d "var1=1&var2=2"
+```
+
+
+
+
+
+
+
+

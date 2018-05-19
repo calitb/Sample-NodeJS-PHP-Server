@@ -37,6 +37,17 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       TZ: America/Panama
+  nodejs:
+    build:
+      context: ./nodejs
+      dockerfile: ./Dockerfile-dev
+    image: nodejs
+    container_name: nodejs
+    ports:
+      - 32774:3000
+    volumes:
+      - ./nodejs/src:/usr/app/src
+      - ./nodejs/package.json:/usr/app/package.json
   adminer:
     image: adminer
     container_name: adminer
