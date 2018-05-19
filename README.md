@@ -46,7 +46,7 @@ mysql -u {user} -p -h 192.168.99.100
 
 You can also enter the mysql container CLI first and then access mysql:
 
-``
+```
 docker exec -it app-mysql bash
 mysql -u {user} -p
 ```
