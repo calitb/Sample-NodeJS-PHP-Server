@@ -7,4 +7,5 @@ RUN usermod -u 1000 mysql
 
 EXPOSE 3306 
 
+COPY ./my.cnf /etc/mysql/conf.d
 COPY ./myDB.sql docker-entrypoint-initdb.d/init.sql
